@@ -1,0 +1,436 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		445E3B892AE5585100312EEE /* SetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445E3B882AE5585100312EEE /* SetupViewModel.swift */; };
+		445E3B8B2AE5585B00312EEE /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445E3B8A2AE5585B00312EEE /* SetupView.swift */; };
+		445E3B8E2AE55B6B00312EEE /* BoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445E3B8D2AE55B6B00312EEE /* BoxViewModel.swift */; };
+		445E3B902AE55B7200312EEE /* BoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445E3B8F2AE55B7200312EEE /* BoxView.swift */; };
+		448167642AE446650033B4BC /* BiltongTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448167632AE446650033B4BC /* BiltongTrackerApp.swift */; };
+		448167662AE446650033B4BC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448167652AE446650033B4BC /* ContentView.swift */; };
+		448167682AE446660033B4BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 448167672AE446660033B4BC /* Assets.xcassets */; };
+		4481676B2AE446660033B4BC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4481676A2AE446660033B4BC /* Preview Assets.xcassets */; };
+		448167732AE44C5A0033B4BC /* BluetoothScannerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448167722AE44C5A0033B4BC /* BluetoothScannerService.swift */; };
+		448167752AE44C9D0033B4BC /* BluetoothExchangeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448167742AE44C9C0033B4BC /* BluetoothExchangeService.swift */; };
+		448167772AE45B1E0033B4BC /* ConnectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448167762AE45B1E0033B4BC /* ConnectViewModel.swift */; };
+		448167792AE45B2A0033B4BC /* ConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448167782AE45B2A0033B4BC /* ConnectView.swift */; };
+		4481677E2AE506D90033B4BC /* DeviceDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4481677D2AE506D90033B4BC /* DeviceDescriptor.swift */; };
+		448167802AE515090033B4BC /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4481677F2AE515090033B4BC /* Errors.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		445E3B882AE5585100312EEE /* SetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewModel.swift; sourceTree = "<group>"; };
+		445E3B8A2AE5585B00312EEE /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
+		445E3B8D2AE55B6B00312EEE /* BoxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxViewModel.swift; sourceTree = "<group>"; };
+		445E3B8F2AE55B7200312EEE /* BoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxView.swift; sourceTree = "<group>"; };
+		448167602AE446650033B4BC /* BiltongTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiltongTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		448167632AE446650033B4BC /* BiltongTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiltongTrackerApp.swift; sourceTree = "<group>"; };
+		448167652AE446650033B4BC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		448167672AE446660033B4BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4481676A2AE446660033B4BC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		448167722AE44C5A0033B4BC /* BluetoothScannerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothScannerService.swift; sourceTree = "<group>"; };
+		448167742AE44C9C0033B4BC /* BluetoothExchangeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothExchangeService.swift; sourceTree = "<group>"; };
+		448167762AE45B1E0033B4BC /* ConnectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectViewModel.swift; sourceTree = "<group>"; };
+		448167782AE45B2A0033B4BC /* ConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectView.swift; sourceTree = "<group>"; };
+		4481677D2AE506D90033B4BC /* DeviceDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDescriptor.swift; sourceTree = "<group>"; };
+		4481677F2AE515090033B4BC /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4481675D2AE446650033B4BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		445E3B8C2AE55B5600312EEE /* Interaction */ = {
+			isa = PBXGroup;
+			children = (
+				445E3B8D2AE55B6B00312EEE /* BoxViewModel.swift */,
+				445E3B8F2AE55B7200312EEE /* BoxView.swift */,
+			);
+			path = Interaction;
+			sourceTree = "<group>";
+		};
+		445E3B912AE569DF00312EEE /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		448167572AE446650033B4BC = {
+			isa = PBXGroup;
+			children = (
+				448167622AE446650033B4BC /* BiltongTracker */,
+				448167612AE446650033B4BC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		448167612AE446650033B4BC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				448167602AE446650033B4BC /* BiltongTracker.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		448167622AE446650033B4BC /* BiltongTracker */ = {
+			isa = PBXGroup;
+			children = (
+				4481677C2AE45B460033B4BC /* Services */,
+				4481677A2AE45B300033B4BC /* UI */,
+				448167632AE446650033B4BC /* BiltongTrackerApp.swift */,
+				448167652AE446650033B4BC /* ContentView.swift */,
+				448167672AE446660033B4BC /* Assets.xcassets */,
+				448167692AE446660033B4BC /* Preview Content */,
+			);
+			path = BiltongTracker;
+			sourceTree = "<group>";
+		};
+		448167692AE446660033B4BC /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				4481676A2AE446660033B4BC /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		448167712AE44C460033B4BC /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				448167722AE44C5A0033B4BC /* BluetoothScannerService.swift */,
+				448167742AE44C9C0033B4BC /* BluetoothExchangeService.swift */,
+				4481677D2AE506D90033B4BC /* DeviceDescriptor.swift */,
+			);
+			path = Bluetooth;
+			sourceTree = "<group>";
+		};
+		4481677A2AE45B300033B4BC /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				445E3B912AE569DF00312EEE /* Common */,
+				4481677B2AE45B370033B4BC /* Setup */,
+				445E3B8C2AE55B5600312EEE /* Interaction */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		4481677B2AE45B370033B4BC /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				448167762AE45B1E0033B4BC /* ConnectViewModel.swift */,
+				448167782AE45B2A0033B4BC /* ConnectView.swift */,
+				445E3B882AE5585100312EEE /* SetupViewModel.swift */,
+				445E3B8A2AE5585B00312EEE /* SetupView.swift */,
+			);
+			path = Setup;
+			sourceTree = "<group>";
+		};
+		4481677C2AE45B460033B4BC /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				448167712AE44C460033B4BC /* Bluetooth */,
+				4481677F2AE515090033B4BC /* Errors.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4481675F2AE446650033B4BC /* BiltongTracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4481676E2AE446660033B4BC /* Build configuration list for PBXNativeTarget "BiltongTracker" */;
+			buildPhases = (
+				4481675C2AE446650033B4BC /* Sources */,
+				4481675D2AE446650033B4BC /* Frameworks */,
+				4481675E2AE446650033B4BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BiltongTracker;
+			productName = BiltongTracker;
+			productReference = 448167602AE446650033B4BC /* BiltongTracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		448167582AE446650033B4BC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					4481675F2AE446650033B4BC = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 4481675B2AE446650033B4BC /* Build configuration list for PBXProject "BiltongTracker" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 448167572AE446650033B4BC;
+			productRefGroup = 448167612AE446650033B4BC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4481675F2AE446650033B4BC /* BiltongTracker */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4481675E2AE446650033B4BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4481676B2AE446660033B4BC /* Preview Assets.xcassets in Resources */,
+				448167682AE446660033B4BC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4481675C2AE446650033B4BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				448167662AE446650033B4BC /* ContentView.swift in Sources */,
+				445E3B892AE5585100312EEE /* SetupViewModel.swift in Sources */,
+				448167732AE44C5A0033B4BC /* BluetoothScannerService.swift in Sources */,
+				448167642AE446650033B4BC /* BiltongTrackerApp.swift in Sources */,
+				448167772AE45B1E0033B4BC /* ConnectViewModel.swift in Sources */,
+				445E3B8E2AE55B6B00312EEE /* BoxViewModel.swift in Sources */,
+				448167802AE515090033B4BC /* Errors.swift in Sources */,
+				448167792AE45B2A0033B4BC /* ConnectView.swift in Sources */,
+				445E3B902AE55B7200312EEE /* BoxView.swift in Sources */,
+				448167752AE44C9D0033B4BC /* BluetoothExchangeService.swift in Sources */,
+				445E3B8B2AE5585B00312EEE /* SetupView.swift in Sources */,
+				4481677E2AE506D90033B4BC /* DeviceDescriptor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		4481676C2AE446660033B4BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4481676D2AE446660033B4BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4481676F2AE446660033B4BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BiltongTracker/Preview Content\"";
+				DEVELOPMENT_TEAM = 2YPMG82UM3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This app uses bluetooth to access your meaty box";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.exploreshackle.BiltongTracker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		448167702AE446660033B4BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BiltongTracker/Preview Content\"";
+				DEVELOPMENT_TEAM = 2YPMG82UM3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This app uses bluetooth to access your meaty box";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.exploreshackle.BiltongTracker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4481675B2AE446650033B4BC /* Build configuration list for PBXProject "BiltongTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4481676C2AE446660033B4BC /* Debug */,
+				4481676D2AE446660033B4BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4481676E2AE446660033B4BC /* Build configuration list for PBXNativeTarget "BiltongTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4481676F2AE446660033B4BC /* Debug */,
+				448167702AE446660033B4BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 448167582AE446650033B4BC /* Project object */;
+}
