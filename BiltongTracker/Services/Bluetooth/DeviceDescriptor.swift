@@ -20,5 +20,24 @@ enum DeviceDescriptor {
         static let command = CBUUID(string: "a831f156-f70d-479f-b11b-9c2a8e2203de")
 //        static let commandResult = CBUUID(string: "5cb7fac1-215e-4713-bc3f-614af4278d9a")
         static let dataOut = CBUUID(string: "07c769ae-9de2-4e07-bad4-dc4f52f98790")
+        
+        static func charName(uuid: CBUUID) -> String {
+            switch uuid {
+            case status:
+                "STATUS"
+            case readings:
+                "READINGS"
+            case settings:
+                "SETTINGS"
+            case secureSettings:
+                "SECURE SETTINGS"
+            case command:
+                "COMMAND"
+            case dataOut:
+                "DATA OUT"
+            default:
+                ">>UNKNOWN<<"
+            }
+        }
     }
 }

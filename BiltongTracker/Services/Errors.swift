@@ -25,7 +25,8 @@ struct BiltongError: Error {
         static let deviceReportedError = 2002
         static let deviceProvidedMalformedResponse = 2003
         static let dataExchangeTimeout = 2005
-        
+        static let deviceDisconnected = 2021
+
         // Generic data errors
         static let malformedInput = 8001 // input parameter can't be processed
     }

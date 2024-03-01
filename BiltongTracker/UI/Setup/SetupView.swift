@@ -5,6 +5,7 @@
 //  Created by Igor Chertenkov on 22/10/2023.
 //
 
+import Combine
 import SwiftUI
 
 struct SetupView: View {
@@ -28,6 +29,6 @@ struct SetupView: View {
 
 struct SetupView_Previews: PreviewProvider {
     static var previews: some View {
-        SetupView(viewModel: SetupViewModel(exchangeService: BluetoothExchangeComponent.Mock()))
+        SetupView(viewModel: SetupViewModel(exchangeService: BluetoothExchangeComponent.Mock(), completionRoute: PassthroughSubject<SetupViewModel.CompletionRoute, Never>()))
     }
 }

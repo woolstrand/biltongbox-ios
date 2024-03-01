@@ -54,10 +54,7 @@ struct ConnectView: View {
                     } label: {
                         Text("Reset")
                     }
-
-                    
                 }
-                
                 Spacer()
             }
             .padding(.top, 48)

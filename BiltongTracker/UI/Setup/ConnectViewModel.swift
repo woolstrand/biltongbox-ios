@@ -103,17 +103,16 @@ class ConnectViewModel: ObservableObject {
         Task {
             do {
                 try await connectedService.waitForInitializationToComplete()
-                let status = try await connectedService.readStatus()
+                let status = try await waitForStatusUpdate()
+                
                 DispatchQueue.main.async {
                     switch status {
-                    case "X":
+                    case .NOT_INITIALIZED:
                         self.navigatingToSetup = true
                         self.state = .idle
-                    case "A":
+                    default:
                         self.navigatingToBox = true
                         self.state = .idle
-                    default:
-                        self.state = .error(BiltongError(code: BiltongError.Codes.deviceInUnknownState))
                     }
                 }
             } catch {
@@ -124,12 +123,33 @@ class ConnectViewModel: ObservableObject {
         }
     }
     
+    func waitForStatusUpdate() async throws -> Status {
+        guard let status = try? await self.connectedExchangeService?.readStatus() else {
+            try await Task.sleep(nanoseconds: 1_000_000_000 / 2)
+            return try await waitForStatusUpdate()
+        }
+        
+        return status
+    }
+    
     func getSetupViewModelForNavigation() -> SetupViewModel? {
         guard let connectedExchangeService else {
             return nil
         }
         
-        return SetupViewModel(exchangeService: connectedExchangeService)
+        let route = PassthroughSubject<SetupViewModel.CompletionRoute, Never>()
+        route.sink { [weak self] route in
+            switch route {
+            case .setupCancelled:
+                print("Setup cancelled")
+            case .setupFailed:
+                print("Setup failed")
+            case .setupCompleted:
+                print("Setup completed")
+                self?.navigatingToBox = true
+            }
+        }.store(in: &subs)
+        return SetupViewModel(exchangeService: connectedExchangeService, completionRoute: route)
     }
     
     func getBoxViewModelForNavigation() -> BoxViewModel? {

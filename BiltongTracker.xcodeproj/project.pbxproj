@@ -21,6 +21,10 @@
 		448167792AE45B2A0033B4BC /* ConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448167782AE45B2A0033B4BC /* ConnectView.swift */; };
 		4481677E2AE506D90033B4BC /* DeviceDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4481677D2AE506D90033B4BC /* DeviceDescriptor.swift */; };
 		448167802AE515090033B4BC /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4481677F2AE515090033B4BC /* Errors.swift */; };
+		44CEA00E2AFF553300961CBD /* CalibrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CEA00D2AFF553300961CBD /* CalibrationView.swift */; };
+		44CEA0102AFF554000961CBD /* CalibrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CEA00F2AFF554000961CBD /* CalibrationViewModel.swift */; };
+		44F0C28E2B8B9A4000A1D894 /* WedgeChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0C28D2B8B9A4000A1D894 /* WedgeChartView.swift */; };
+		44F0C2902B8BC89A00A1D894 /* AlertDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0C28F2B8BC89A00A1D894 /* AlertDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +43,10 @@
 		448167782AE45B2A0033B4BC /* ConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectView.swift; sourceTree = "<group>"; };
 		4481677D2AE506D90033B4BC /* DeviceDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDescriptor.swift; sourceTree = "<group>"; };
 		4481677F2AE515090033B4BC /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		44CEA00D2AFF553300961CBD /* CalibrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationView.swift; sourceTree = "<group>"; };
+		44CEA00F2AFF554000961CBD /* CalibrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationViewModel.swift; sourceTree = "<group>"; };
+		44F0C28D2B8B9A4000A1D894 /* WedgeChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WedgeChartView.swift; sourceTree = "<group>"; };
+		44F0C28F2B8BC89A00A1D894 /* AlertDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +63,7 @@
 		445E3B8C2AE55B5600312EEE /* Interaction */ = {
 			isa = PBXGroup;
 			children = (
+				44F0C28D2B8B9A4000A1D894 /* WedgeChartView.swift */,
 				445E3B8D2AE55B6B00312EEE /* BoxViewModel.swift */,
 				445E3B8F2AE55B7200312EEE /* BoxView.swift */,
 			);
@@ -64,6 +73,7 @@
 		445E3B912AE569DF00312EEE /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				44F0C28F2B8BC89A00A1D894 /* AlertDTO.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -120,6 +130,7 @@
 			children = (
 				445E3B912AE569DF00312EEE /* Common */,
 				4481677B2AE45B370033B4BC /* Setup */,
+				44CEA00C2AFF551E00961CBD /* Calibration */,
 				445E3B8C2AE55B5600312EEE /* Interaction */,
 			);
 			path = UI;
@@ -143,6 +154,15 @@
 				4481677F2AE515090033B4BC /* Errors.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		44CEA00C2AFF551E00961CBD /* Calibration */ = {
+			isa = PBXGroup;
+			children = (
+				44CEA00F2AFF554000961CBD /* CalibrationViewModel.swift */,
+				44CEA00D2AFF553300961CBD /* CalibrationView.swift */,
+			);
+			path = Calibration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,15 +236,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				448167662AE446650033B4BC /* ContentView.swift in Sources */,
+				44CEA00E2AFF553300961CBD /* CalibrationView.swift in Sources */,
 				445E3B892AE5585100312EEE /* SetupViewModel.swift in Sources */,
 				448167732AE44C5A0033B4BC /* BluetoothScannerService.swift in Sources */,
 				448167642AE446650033B4BC /* BiltongTrackerApp.swift in Sources */,
 				448167772AE45B1E0033B4BC /* ConnectViewModel.swift in Sources */,
 				445E3B8E2AE55B6B00312EEE /* BoxViewModel.swift in Sources */,
 				448167802AE515090033B4BC /* Errors.swift in Sources */,
+				44F0C2902B8BC89A00A1D894 /* AlertDTO.swift in Sources */,
 				448167792AE45B2A0033B4BC /* ConnectView.swift in Sources */,
 				445E3B902AE55B7200312EEE /* BoxView.swift in Sources */,
 				448167752AE44C9D0033B4BC /* BluetoothExchangeService.swift in Sources */,
+				44F0C28E2B8B9A4000A1D894 /* WedgeChartView.swift in Sources */,
+				44CEA0102AFF554000961CBD /* CalibrationViewModel.swift in Sources */,
 				445E3B8B2AE5585B00312EEE /* SetupView.swift in Sources */,
 				4481677E2AE506D90033B4BC /* DeviceDescriptor.swift in Sources */,
 			);
