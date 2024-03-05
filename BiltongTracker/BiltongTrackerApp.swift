@@ -11,7 +11,7 @@ import SwiftUI
 struct BiltongTrackerApp: App {
     var body: some Scene {
         WindowGroup {
-            ConnectView(viewModel: ConnectViewModel(scannerService: BluetoothScannerComponent.Service()))
+            ConnectView(viewModel: ConnectViewModel(scannerService: BluetoothScannerComponent.Service(settingsStore: UserDefaults.standard)))
         }
     }
 }

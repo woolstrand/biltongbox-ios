@@ -25,6 +25,10 @@
 		44CEA0102AFF554000961CBD /* CalibrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CEA00F2AFF554000961CBD /* CalibrationViewModel.swift */; };
 		44F0C28E2B8B9A4000A1D894 /* WedgeChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0C28D2B8B9A4000A1D894 /* WedgeChartView.swift */; };
 		44F0C2902B8BC89A00A1D894 /* AlertDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0C28F2B8BC89A00A1D894 /* AlertDTO.swift */; };
+		44FAE7092B91D31E00B2523D /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FAE7082B91D31E00B2523D /* SettingsStore.swift */; };
+		44FAE70B2B949ABD00B2523D /* FrameModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FAE70A2B949ABD00B2523D /* FrameModifier.swift */; };
+		44FAE70D2B95188100B2523D /* TripleArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FAE70C2B95188100B2523D /* TripleArrow.swift */; };
+		44FAE70F2B96430400B2523D /* SliderInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FAE70E2B96430400B2523D /* SliderInputView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +51,10 @@
 		44CEA00F2AFF554000961CBD /* CalibrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationViewModel.swift; sourceTree = "<group>"; };
 		44F0C28D2B8B9A4000A1D894 /* WedgeChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WedgeChartView.swift; sourceTree = "<group>"; };
 		44F0C28F2B8BC89A00A1D894 /* AlertDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDTO.swift; sourceTree = "<group>"; };
+		44FAE7082B91D31E00B2523D /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		44FAE70A2B949ABD00B2523D /* FrameModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameModifier.swift; sourceTree = "<group>"; };
+		44FAE70C2B95188100B2523D /* TripleArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripleArrow.swift; sourceTree = "<group>"; };
+		44FAE70E2B96430400B2523D /* SliderInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderInputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +74,7 @@
 				44F0C28D2B8B9A4000A1D894 /* WedgeChartView.swift */,
 				445E3B8D2AE55B6B00312EEE /* BoxViewModel.swift */,
 				445E3B8F2AE55B7200312EEE /* BoxView.swift */,
+				44FAE70E2B96430400B2523D /* SliderInputView.swift */,
 			);
 			path = Interaction;
 			sourceTree = "<group>";
@@ -74,6 +83,8 @@
 			isa = PBXGroup;
 			children = (
 				44F0C28F2B8BC89A00A1D894 /* AlertDTO.swift */,
+				44FAE70A2B949ABD00B2523D /* FrameModifier.swift */,
+				44FAE70C2B95188100B2523D /* TripleArrow.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -121,6 +132,7 @@
 				448167722AE44C5A0033B4BC /* BluetoothScannerService.swift */,
 				448167742AE44C9C0033B4BC /* BluetoothExchangeService.swift */,
 				4481677D2AE506D90033B4BC /* DeviceDescriptor.swift */,
+				44FAE7082B91D31E00B2523D /* SettingsStore.swift */,
 			);
 			path = Bluetooth;
 			sourceTree = "<group>";
@@ -241,11 +253,15 @@
 				448167732AE44C5A0033B4BC /* BluetoothScannerService.swift in Sources */,
 				448167642AE446650033B4BC /* BiltongTrackerApp.swift in Sources */,
 				448167772AE45B1E0033B4BC /* ConnectViewModel.swift in Sources */,
+				44FAE70B2B949ABD00B2523D /* FrameModifier.swift in Sources */,
 				445E3B8E2AE55B6B00312EEE /* BoxViewModel.swift in Sources */,
 				448167802AE515090033B4BC /* Errors.swift in Sources */,
+				44FAE7092B91D31E00B2523D /* SettingsStore.swift in Sources */,
 				44F0C2902B8BC89A00A1D894 /* AlertDTO.swift in Sources */,
 				448167792AE45B2A0033B4BC /* ConnectView.swift in Sources */,
 				445E3B902AE55B7200312EEE /* BoxView.swift in Sources */,
+				44FAE70D2B95188100B2523D /* TripleArrow.swift in Sources */,
+				44FAE70F2B96430400B2523D /* SliderInputView.swift in Sources */,
 				448167752AE44C9D0033B4BC /* BluetoothExchangeService.swift in Sources */,
 				44F0C28E2B8B9A4000A1D894 /* WedgeChartView.swift in Sources */,
 				44CEA0102AFF554000961CBD /* CalibrationViewModel.swift in Sources */,

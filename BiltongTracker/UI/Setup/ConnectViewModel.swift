@@ -46,6 +46,7 @@ class ConnectViewModel: ObservableObject {
     init(scannerService: BluetoothScannerComponent.Interface) {
         devices = []
         self.scannerService = scannerService
+        self.startScanning()
     }
     
     func startScanning() {
@@ -57,10 +58,15 @@ class ConnectViewModel: ObservableObject {
             await scannerService.disconnectActivePeripheral()
         }
         
-        scannerSub = scannerService.scan()
+        scannerSub = scannerService.scan(autoconnect: true)
+            .receive(on: DispatchQueue.main)
             .sink { device in
-                if !self.devices.contains(where: { $0.id == device.id }) {
-                    self.devices.append(device)
+                if let connectedService = device.connection {
+                    self.proceedWithConnectedDevice(connectedService)
+                } else {
+                    if !self.devices.contains(where: { $0.id == device.id }) {
+                        self.devices.append(device)
+                    }
                 }
             }
         
@@ -157,6 +163,6 @@ class ConnectViewModel: ObservableObject {
             return nil
         }
         
-        return BoxViewModel(exchangeService: connectedExchangeService)
+        return BoxViewModel(scannerService: scannerService, exchangeService: connectedExchangeService)
     }
 }

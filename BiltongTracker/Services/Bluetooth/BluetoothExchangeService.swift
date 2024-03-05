@@ -16,6 +16,9 @@ struct ProgressData {
     let startDate: Date
     let initialWeight: Double
     let currentWeight: Double
+    let targetWeight: Double
+    let humidity: Double
+    let temperature: Double
 }
 
 enum Status: Int {
@@ -83,6 +86,10 @@ extension BluetoothExchangeComponent {
             
             guard peripheral.state == .connected else {
                 throw BiltongError(code: BiltongError.Codes.deviceDisconnected)
+            }
+            
+            if self.sendCommandContinuation != nil {
+                assertionFailure("Trying to execute a command while the previous was not yet completed")
             }
             
             await MainActor.run {
@@ -274,15 +281,25 @@ extension BluetoothExchangeComponent.Service: CBPeripheralDelegate {
                let string = String(data: data, encoding: .utf8) {
                 // parse string
                 let components = string.components(separatedBy: CharacterSet(charactersIn: ":"))
-                guard components.count > 2,
+                guard components.count > 5,
                       let currentWeight = Double(components[0]),
                       let initialWeight = Double(components[1]),
-                      let initialTime = Int(components[2]) else {
+                      let targetWeight = Double(components[2]),
+                      let initialTime = Int(components[3]),
+                      let temperature = Double(components[4]),
+                      let humidity = Double(components[5]) else {
                     continuation.resume(throwing: BiltongError(code: BiltongError.Codes.deviceProvidedMalformedResponse))
                     return
                 }
                 
-                let progressData = ProgressData(startDate: Date(timeIntervalSince1970: Double(initialTime)), initialWeight: initialWeight, currentWeight: currentWeight)
+                let progressData = ProgressData(
+                    startDate: Date(timeIntervalSince1970: Double(initialTime)),
+                    initialWeight: initialWeight,
+                    currentWeight: currentWeight,
+                    targetWeight: targetWeight,
+                    humidity: humidity,
+                    temperature: temperature
+                )
                 continuation.resume(returning: progressData)
             } else {
                 continuation.resume(throwing: BiltongError(code: BiltongError.Codes.deviceProvidedMalformedResponse))
@@ -296,24 +313,37 @@ extension BluetoothExchangeComponent.Service: CBPeripheralDelegate {
 
 extension BluetoothExchangeComponent {
     class Mock: Interface {
+        var status: Status = .PROCESS_IN_PROGRESS
+        
         func waitForInitializationToComplete() async throws {
         }
         
         func sendCommand(_ command: String) async throws -> String {
             try? await Task.sleep(for: .milliseconds(500))
+            if command.hasPrefix("START") {
+                status = .PROCESS_IN_PROGRESS
+            } else if command.hasPrefix("STOP") {
+                status = .INITIALIZED_IDLE
+            }
+            
             return "OK"
         }
         
         func readStatus() async throws -> Status {
             try? await Task.sleep(for: .milliseconds(500))
-            return .NOT_INITIALIZED
+            return status
         }
         
         func readProgress() async throws -> ProgressData {
             try? await Task.sleep(for: .milliseconds(500))
-            return ProgressData(startDate: .distantPast, initialWeight: 1, currentWeight: 1)
+            return ProgressData(
+                startDate: .distantPast,
+                initialWeight: 1000,
+                currentWeight: 800,
+                targetWeight: 400,
+                humidity: 50.0,
+                temperature: 20.0
+            )
         }
-        
-        
     }
 }

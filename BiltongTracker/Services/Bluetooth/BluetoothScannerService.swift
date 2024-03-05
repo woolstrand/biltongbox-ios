@@ -9,33 +9,63 @@ import CoreBluetooth
 import Combine
 import Foundation
 
-struct BluetoothScannerComponent {
+enum BluetoothScannerComponent {
     typealias Interface = BluetoothScannerComponentInterface
     
+    /// This structure describes a device found during scanning
     struct Device: Identifiable {
+        
+        /// Device identifier
         let id: UUID
+        
+        /// Display name of the device
         let displayName: String
+        
+        /// Initialized connection component if the device was automatically connected, nil otherwise.
+        let connection: BluetoothExchangeComponent.Interface?
     }
 }
 
 
 protocol BluetoothScannerComponentInterface {
-    func scan() -> AnyPublisher<BluetoothScannerComponent.Device, Never>
+    /// Starts scanning for nearby devices.
+    /// @param autoconnect if true, attempts to connect to the last used device automatically.
+    func scan(autoconnect: Bool) -> AnyPublisher<BluetoothScannerComponent.Device, Never>
+    
+    /// Stops scanning process
     func stopScan()
+    
+    /// Connects to a specific peripheral device
+    /// @param id device identifier
     func connectToPeripheral(with id: UUID) async throws -> BluetoothExchangeComponent.Interface
-    func disconnectActivePeripheral() async -> Void
+    
+    /// Disconnects any active peripheral
+    func disconnectActivePeripheral() async
+    
+    /// Erases saved device info, this way disables next autoconnection attempt
+    func forgetSavedDevice()
 }
 
 extension BluetoothScannerComponent {
     class Service: NSObject, BluetoothScannerComponent.Interface {
-        lazy private var manager: CBCentralManager = {
-            CBCentralManager(delegate: self, queue: nil)
-        }()
-        
         var neverAuthorized: Bool {
             CBCentralManager.authorization == .notDetermined
         }
         
+        // Consts
+        private enum Constants {
+            static let lastUsedDeviceIdKey = "biltong.lastUsedCBUUID"
+        }
+        
+        // External Deps
+        private var settingsStore: SettingsStore
+        
+        // Internal Deps (do I want to mock CBCentralManager? Guess not right now)
+        lazy private var manager: CBCentralManager = {
+            CBCentralManager(delegate: self, queue: nil)
+        }()
+
+        // Internal state
         private var foundDevicesNotifier: PassthroughSubject<Device, Never>?
         private var needsStartScanning = false
         private var devicesList: [CBPeripheral] = []
@@ -44,12 +74,22 @@ extension BluetoothScannerComponent {
         private var connectionTimeoutTimer: Timer?
         private var connectionContinuation: CheckedContinuation<BluetoothExchangeComponent.Interface, Error>?
         private var disconnectionContinuation: CheckedContinuation<Void, Never>?
+        
+        private var deviceForAutoconnection: UUID?
 
-        override init() {
+        init(settingsStore: SettingsStore) {
+            self.settingsStore = settingsStore
             super.init()
         }
         
-        func scan() -> AnyPublisher<Device, Never> {
+        func scan(autoconnect: Bool) -> AnyPublisher<Device, Never> {
+            if autoconnect,
+               let storedUUIDString = settingsStore.string(forKey: Constants.lastUsedDeviceIdKey) {
+                deviceForAutoconnection = UUID(uuidString: storedUUIDString)
+            } else {
+                deviceForAutoconnection = nil
+            }
+            
             if self.manager.isScanning {
                 if let foundDevicesNotifier {
                     return foundDevicesNotifier
@@ -79,12 +119,18 @@ extension BluetoothScannerComponent {
         
         func stopScan() {
             manager.stopScan()
+            deviceForAutoconnection = nil
         }
         
         func connectToPeripheral(with id: UUID) async throws -> BluetoothExchangeComponent.Interface {
             guard let device = devicesList.first(where: { $0.identifier == id }) else {
                 throw BiltongError(code: BiltongError.Codes.deviceNotFound)
             }
+            
+            return try await connectToPeripheral(device)
+        }
+        
+        private func connectToPeripheral(_ device: CBPeripheral) async throws -> BluetoothExchangeComponent.Interface {
             
             if let activeDevice {
                 manager.cancelPeripheralConnection(activeDevice)
@@ -118,6 +164,10 @@ extension BluetoothScannerComponent {
                 manager.cancelPeripheralConnection(activeDevice)
             })
         }
+        
+        func forgetSavedDevice() {
+            settingsStore.setValue(nil, forKey: Constants.lastUsedDeviceIdKey)
+        }
     }
 }
 
@@ -141,9 +191,34 @@ extension BluetoothScannerComponent.Service: CBCentralManagerDelegate {
         advertisementData: [String : Any],
         rssi RSSI: NSNumber
     ) {
+        // If we consider autoconnection
+        if let deviceForAutoconnection {
+            // Check if the found device is eligible
+            if peripheral.identifier == deviceForAutoconnection {
+                Task {
+                    // Try to connect
+                    let connection = try? await connectToPeripheral(peripheral)
+                    let device = BluetoothScannerComponent.Device(
+                        id: peripheral.identifier,
+                        displayName: peripheral.name ?? "unnamed",
+                        connection: connection
+                    )
+                    
+                    // Notify about device found, this device will hold connection object if the
+                    // connection was established successfully
+                    foundDevicesNotifier?.send(device)
+                }
+                
+                // Do not notify immediately about that device, try to connect first
+                return
+            }
+        }
+        
+        // Otherwise notify about the device, but without connection specified.
         let device = BluetoothScannerComponent.Device(
             id: peripheral.identifier,
-            displayName: peripheral.name ?? "unnamed"
+            displayName: peripheral.name ?? "unnamed",
+            connection: nil
         )
         
         if !devicesList.contains(where: { $0.identifier == peripheral.identifier}) {
@@ -176,6 +251,8 @@ extension BluetoothScannerComponent.Service: CBCentralManagerDelegate {
             return
         }
 
+        settingsStore.setValue(peripheral.identifier.uuidString, forKey: Constants.lastUsedDeviceIdKey)
+        
         connectionContinuation?.resume(returning: BluetoothExchangeComponent.Service(peripheral))
         connectionTimeoutTimer?.invalidate()
         connectionContinuation = nil
@@ -193,11 +270,12 @@ extension BluetoothScannerComponent.Service: CBCentralManagerDelegate {
 
 extension BluetoothScannerComponent {
     class Mock: BluetoothScannerComponent.Interface {
-        func scan() -> AnyPublisher<BluetoothScannerComponent.Device, Never> {
+        func scan(autoconnect: Bool) -> AnyPublisher<BluetoothScannerComponent.Device, Never> {
             Just(
                 BluetoothScannerComponent.Device(
                     id: UUID(),
-                    displayName: "Box Mock I"
+                    displayName: "Box Mock I",
+                    connection: nil
                 )
             )
             .delay(for: .seconds(2), scheduler: RunLoop.main)
@@ -217,5 +295,6 @@ extension BluetoothScannerComponent {
             return
         }
         
+        func forgetSavedDevice() {}
     }
 }
