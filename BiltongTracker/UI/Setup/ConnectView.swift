@@ -34,12 +34,19 @@ struct ConnectView: View {
                                 viewModel.connectDevice(device.id)
                             }
                     }
+                    .clipShape(
+                        RoundedRectangle(cornerRadius: 12)
+                    )
                     
                     Button {
                         viewModel.stopScanning()
                     } label: {
                         Text("Stop scanning")
                     }
+                    .padding(.vertical, 8)
+                    .padding(.horizontal, 24)
+                    .enframed(cornerRadius: 8)
+                    .padding(.top, 12)
                     
                 case .connecting:
                     HStack {
@@ -57,7 +64,10 @@ struct ConnectView: View {
                 }
                 Spacer()
             }
+            .padding(16)
+            .enframed()
             .padding(.top, 48)
+            .padding(16)
             .navigationDestination(isPresented: $viewModel.navigatingToSetup) {
                 if let viewModel = viewModel.getSetupViewModelForNavigation() {
                     SetupView(viewModel: viewModel)

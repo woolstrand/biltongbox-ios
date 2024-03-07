@@ -167,6 +167,7 @@ class BoxViewModel: ObservableObject {
     
     func userDidEnterTargetPercentage(_ stringValue: String) {
         canStart = false
+        shouldShowStartInput = false
         Task {
             do {
                 let response = try await self.exchangeService.sendCommand("START:\(stringValue)")

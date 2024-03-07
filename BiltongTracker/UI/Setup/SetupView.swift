@@ -14,16 +14,23 @@ struct SetupView: View {
     var body: some View {
         VStack {
             Text("Connect wifi")
-                .padding(.top, 24)
+                .font(.title)
+                .padding(.top, 12)
                 .padding(.vertical, 8)
             TextField("Network name", text: $viewModel.networkSSID)
+                .textFieldStyle(.roundedBorder)
             TextField("Password", text: $viewModel.networkPassword)
+                .textFieldStyle(.roundedBorder)
             Button("Apply") {
                 viewModel.userDidTapConfigure()
             }
+            .buttonStyle(.bordered)
             .disabled(!viewModel.canProceed)
+            .padding(.bottom, 8)
         }
         .padding(.horizontal, 16)
+        .enframed()
+        .padding(16)
     }
 }
 
